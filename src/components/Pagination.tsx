@@ -11,7 +11,7 @@ export default function Pagination({
   currentPage,
   totalPages,
   onPageChange,
-  siblingCount = 1
+  siblingCount = 1,
 }: PaginationProps) {
   const DOTS = "...";
 
@@ -55,15 +55,15 @@ export default function Pagination({
   const pages = generatePageNumbers();
 
   return (
-    <div className="flex justify-center mt-6">
+    <div className="flex justify-center">
       <nav className="inline-flex items-center space-x-1 bg-blackDDS p-3 rounded-xl">
-          <button
-            onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-3 py-2 cursor-pointer rounded-l-md text-white opacity-70 hover:opacity-80 disabled:opacity-20 disabled:cursor-not-allowed"
-          >
-            Previous
-          </button>
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="px-3 py-2 cursor-pointer rounded-l-md text-white opacity-70 hover:opacity-80 disabled:opacity-20 disabled:cursor-not-allowed"
+        >
+          Previous
+        </button>
 
         {pages.map((page, index) => {
           if (page === DOTS) {
@@ -88,15 +88,14 @@ export default function Pagination({
           );
         })}
 
-          <button
-            onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages }
-            className="px-3 py-2 rounded-l-md text-white cursor-pointer opacity-70 hover:opacity-80 disabled:opacity-20 disabled:cursor-not-allowed"
-          >
-            Next
-          </button>
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="px-3 py-2 rounded-l-md text-white cursor-pointer opacity-70 hover:opacity-80 disabled:opacity-20 disabled:cursor-not-allowed"
+        >
+          Next
+        </button>
       </nav>
     </div>
   );
-};
-
+}
